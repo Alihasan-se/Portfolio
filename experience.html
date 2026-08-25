@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Ali Hasan</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        :root {
+            --bg-deep: #060913;
+            --bg-card: rgba(13, 20, 36, 0.75);
+            --bg-card-hover: rgba(20, 31, 56, 0.85);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.35);
+            --accent: #4facfe;
+            --accent-gold: #ffb703;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 242, 254, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(79, 172, 254, 0.08) 0%, transparent 40%);
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* HEADER / NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* MAIN SECTION WITH ANIMATION */
+        .main-wrapper {
+            padding: 8rem 2rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 85vh;
+            animation: slideFromLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .page-title span {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3.5rem 0 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .section-header i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-glow), transparent);
+        }
+
+        /* TIMELINE LAYOUT */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-glow);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.6rem;
+            top: 1.2rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 12px var(--primary-glow);
+            z-index: 2;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            border-color: rgba(0, 242, 254, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+
+        /* ROLE HEADER WITH LOGO */
+        .role-header-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .company-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .company-logo i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .role-header-content {
+            flex: 1;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .role-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .company-name {
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        .date-badge {
+            background: rgba(0, 242, 254, 0.08);
+            color: var(--primary);
+            border: 1px solid var(--border-glow);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* MULTI-ROLE SUB-TIMELINE INSIDE CARD */
+        .multi-role-container {
+            margin: 1.2rem 0;
+            padding-left: 1rem;
+            border-left: 2px dashed rgba(0, 242, 254, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .role-step {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .role-step::before {
+            content: '';
+            position: absolute;
+            left: -1.35rem;
+            top: 0.4rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .role-step-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .role-step-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+        }
+
+        .experience-details {
+            list-style: none;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .experience-details li {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .experience-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* SOCIAL LOGOS */
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-top: 3rem;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glow);
+            padding: 1.8rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(6, 9, 19, 0.9);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 850px) {
+            .page-title { font-size: 2.2rem; }
+            .role-header { flex-direction: column; gap: 0.4rem; }
+            .role-header-wrapper { flex-direction: column; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-deep);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                border-bottom: 1px solid var(--border-glow);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ALI<span> HASAN</span></a>
+            <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="experience.html" class="active">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-wrapper">
+        <h1 class="page-title">Work & <span>Leadership</span></h1>
+        <p class="page-subtitle">My professional journey, organizational leadership, and community service impact</p>
+
+        <!-- SECTION 1: PROFESSIONAL & LEADERSHIP EXPERIENCE -->
+        <div class="section-header">
+            <i class="fas fa-briefcase"></i> Professional & Leadership Experience
+        </div>
+
+        <div class="timeline">
+            <!-- Experience Item 1: CAUSE Society Multi-Role Journey -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="card">
+                    <div class="role-header-wrapper">
+                        <!-- CAUSE / CUST LOGO CONTAINER -->
+                        <div class="company-logo" title="CAUSE Society">
+                            <img src="cause.jpg" alt="CAUSE Society Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-users" style="display:none;"></i>
+                        </div>
+                        <div class="role-header-content">
+                            <div class="role-header">
+                                <div>
+                                    <h3 class="role-title">Executive Leadership & Operations</h3>
+                                    <div class="company-name">CAUSE Society — Capital University of Science & Technology</div>
+                                </div>
+                                <span class="date-badge">Sep 2024 — Jun 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MULTI-ROLE TIMELINE STEPS -->
+                    <div class="multi-role-container">
+                        <div class="role-step">
+                            <div class="role-step-title">
+                                <span>Joint Secretary</span>
+                                <span class="role-step-date">Nov 2025 — Jun 2026</span>
+                            </div>
+                        </div>
+                        <div class="role-step">
+                            <div class="role-step-title">
+                                <span>Vice President Operations</span>
+                                <span class="role-step-date">Apr 2025 — Nov 2025</span>
+                            </div>
+                        </div>
+                        <div class="role-step">
+                            <div class="role-step-title">
+                                <span>General Secretary</span>
+                                <span class="role-step-date">Sep 2024 — Apr 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="experience-details">
+                        <li>Executive & Operational Leadership: CAUSE Society mein President, Joint Secretary, aur VP Operations ke tor par leadership roles sambhale; multi-departmental teams ko lead kiya aur academic calendar, recruitment, aur society governance ki strategic planning ki.
+                        </li>
+                        <li>Large-Scale Event Execution: Technical workshops, career seminars, aur flagship Hackathon '25 ki end-to-end operational logistics, schedule management, aur on-ground execution ko lead kiya.
+                        </li>
+                        <li>Stakeholder & Resource Management: Faculty advisors, external sponsors, aur student committees ke sath liaiasing ki taake funding, venue management, aur high-impact event execution smooth tareeqay se mukammal ho sake.</ul>
+                        </li></div>
+            </div>
+
+            <!-- Experience Item 2: BISP Internship -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="card">
+                    <div class="role-header-wrapper">
+                        <!-- BISP LOGO CONTAINER -->
+                        <div class="company-logo" title="BISP Headquarters">
+                            <img src="bisp.png" alt="BISP Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-building-shield" style="display:none;"></i>
+                        </div>
+                        <div class="role-header-content">
+                            <div class="role-header">
+                                <div>
+                                    <h3 class="role-title">IT / MIS / Cybersecurity Intern</h3>
+                                    <div class="company-name">Benazir Income Support Programme (BISP HQ), Islamabad</div>
+                                </div>
+                                <span class="date-badge">Aug 2025 — Sep 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="experience-details">
+                        <li>Rotated across IT, MIS, and Cybersecurity wings, assisting technical teams with network operations, system troubleshooting, installations, and server infrastructure monitoring.
+                        </li>
+<li>Contributed to the development of an Employee Management System using ASP.NET Core and SQL Server, implementing database architecture, data validation, CRUD features, and dynamic reporting modules.
+</li>
+<li>Built structured district-wise and department-wise reporting systems to assist executive management in data-driven decision-making.
+</li>
+<li>Assisted in production environment tasks, including application deployment on IIS and database configuration.
+</li>
+<li>Designed a real-time Fortinet Firewall monitoring dashboard utilizing the Elastic Stack (Elasticsearch & Kibana).</ul>
+</li>   </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: COMMUNITY & VOLUNTEER SERVICE -->
+        <div class="section-header">
+            <i class="fas fa-hand-holding-heart"></i> Volunteer Work & Community Service
+        </div>
+
+        <div class="timeline">
+            <!-- VIS Volunteer Experience -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="card">
+                    <div class="role-header-wrapper">
+                        <!-- VIS LOGO CONTAINER -->
+                        <div class="company-logo" title="Volunteers in Service">
+                            <img src="prcs.jpg" alt="VIS Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-hands-helping" style="display:none;"></i>
+                        </div>
+                        <div class="role-header-content">
+                            <div class="role-header">
+                                <div>
+                                    <h3 class="role-title">Community Service Volunteer</h3>
+                                    <div class="company-name">Pakistan Red Crescent Society, Islamabad</div>
+                                </div>
+                                <span class="date-badge">Community Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="experience-details">
+                        <li>Participated in the Volunteer Internship Service (VIS) program centered on community outreach, health awareness, and emergency management.
+                        </li>
+                        <li>Co-designed and delivered school-based awareness sessions on disaster preparedness, incorporating presentation decks, visual aids, pamphlets, and practical first-aid demonstrations.
+                    </li>
+                    <li> Formulated project proposals, progress reports, and final performance presentations for evaluation by PRCS supervisors.</ul>
+                    </li></div>
+            </div>
+        </div>
+        <div class="timeline">
+            <!-- VIS Volunteer Experience -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="card">
+                    <div class="role-header-wrapper">
+                        <!-- VIS LOGO CONTAINER -->
+                        <div class="company-logo" title="Volunteers in Service">
+                            <img src="cust.png" alt="VIS Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-hands-helping" style="display:none;"></i>
+                        </div>
+                        <div class="role-header-content">
+                            <div class="role-header">
+                                <div>
+                                    <h3 class="role-title">Event Management Volunteer</h3>
+                                    <div class="company-name">iSENcE International Conference 2025 (CUST) </div>
+                                </div>
+                                <span class="date-badge">Community Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="experience-details">
+                       <li> Supported on-ground logistics, venue coordination, and event planning for the national conference.
+                    </li>
+<li>Managed session timings and attendee registration while handling real-time communication between speakers and organizing committees.
+</li>     </div>
+            </div>
+        </div>
+
+        <!-- SOCIAL LOGOS -->
+        <div class="social-row">
+            <a href="https://github.com/ah8885162-SE" target="_blank" class="social-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/ali-hasan-61a325356" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alihasan1.se@gmail.com" target="_blank" class="social-icon" title="Send Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div>© 2026 Ali Hasan. Designed & Built with Precision.</div>
+    </footer>
+
+    <!-- EMBEDDED JAVASCRIPT -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
