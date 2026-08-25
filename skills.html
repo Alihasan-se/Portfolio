@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Ali Hasan</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* RESET & BASE VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(17, 24, 39, 0.65);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.4);
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(0, 242, 254, 0.18);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 90% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 35%);
+            background-attachment: fixed;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* NAVBAR HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* MAIN LAYOUT WRAPPER */
+        .main-wrapper {
+            padding: 8rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInPage 1s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PAGE HERO HEADER */
+        .hero-section {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 4rem;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border-glow);
+            color: var(--primary);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* SKILLS MASONRY/GRID LAYOUT */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.2rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 25px 50px rgba(0, 242, 254, 0.12);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(139, 92, 246, 0.15));
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .card-title-group h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-title-group p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* PROGRESS BARS SECTION */
+        .progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        .progress-info span:last-child {
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* BADGE LIST (PILLS) */
+        .pills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .pill-tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: #d1d5db;
+            padding: 0.55rem 1.1rem;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .pill-tag i {
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .pill-tag:hover {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: var(--primary);
+            color: #fff;
+            transform: scale(1.04);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+        }
+
+        /* FOOTER & SOCIAL LINKS */
+        .social-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .social-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glow);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(3, 7, 18, 0.95);
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .page-title { font-size: 2.4rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-deep);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                border-bottom: 1px solid var(--border-glow);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ALI<span> HASAN</span></a>
+            <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+        
+        <!-- PAGE HERO HEADER -->
+        <div class="hero-section">
+            <div class="badge-pill">
+                <i class="fas fa-layer-group"></i> Technical Matrix
+            </div>
+            <h1 class="page-title">Technical Expertise & <span>Core Capabilities</span></h1>
+            <p class="page-subtitle">A comprehensive breakdown of my software engineering capabilities, specialized IoT skills, development technologies, and leadership qualities verified by my academic & industry projects.</p>
+        </div>
+
+        <!-- SKILLS CARDS GRID -->
+        <div class="skills-grid">
+            
+            <!-- 1. Software Engineering & Architecture -->
+            <div class="skill-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="card-title-group">
+                        <h3>Software Engineering</h3>
+                        <p>Architecture, Quality & Life Cycle</p>
+                    </div>
+                </div>
+
+                <!-- Visual Progress Bars for Core Concepts -->
+                <div class="progress-list">
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Software Architecture & Design</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Software Quality Assurance (SQA)</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pills-container">
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Software Construction</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Requirements Engineering</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Software Re-engineering</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Object-Oriented Programming (OOP)</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Agile Development</span>
+                </div>
+            </div>
+
+            <!-- 2. IoT & Embedded Systems -->
+            <div class="skill-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="card-title-group">
+                        <h3>IoT & Embedded Systems</h3>
+                        <p>Hardware, Cloud & Sensors</p>
+                    </div>
+                </div>
+
+                <!-- Visual Progress Bars -->
+                <div class="progress-list">
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>ESP32 & Microcontrollers</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Sensor Integration & Telemetry</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pills-container">
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Internet of Things (IoT)</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Embedded Systems</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Real-time Telemetry</span>
+                    <span class="pill-tag"><i class="fas fa-check-circle"></i> Environmental Sensors</span>
+                </div>
+            </div>
+
+            <!-- 3. Tools, Frameworks & Tech Stack -->
+            <div class="skill-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="card-title-group">
+                        <h3>Tools & Technologies</h3>
+                        <p>Frameworks & Infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="pills-container" style="margin-top: 1rem;">
+                    <span class="pill-tag"><i class="fas fa-code"></i> ASP.NET Core</span>
+                    <span class="pill-tag"><i class="fas fa-database"></i> SQL Server</span>
+                    <span class="pill-tag"><i class="fas fa-globe"></i> Web Development</span>
+                    <span class="pill-tag"><i class="fas fa-terminal"></i> C++</span>
+                    <span class="pill-tag"><i class="fas fa-chart-line"></i> Elastic Stack</span>
+                    <span class="pill-tag"><i class="fas fa-chart-pie"></i> Kibana</span>
+                </div>
+            </div>
+
+            <!-- 4. Leadership & Professional Competencies -->
+            <div class="skill-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-user-gear"></i>
+                    </div>
+                    <div class="card-title-group">
+                        <h3>Professional Competencies</h3>
+                        <p>Management & Collaboration</p>
+                    </div>
+                </div>
+
+                <div class="pills-container" style="margin-top: 1rem;">
+                    <span class="pill-tag"><i class="fas fa-tasks"></i> Project Management</span>
+                    <span class="pill-tag"><i class="fas fa-users"></i> Executive Leadership</span>
+                    <span class="pill-tag"><i class="fas fa-handshake"></i> Teamwork & Coordination</span>
+                    <span class="pill-tag"><i class="fas fa-comments"></i> Technical Communication</span>
+                    <span class="pill-tag"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+                    <span class="pill-tag"><i class="fas fa-clock"></i> Time Management</span>
+                    <span class="pill-tag"><i class="fas fa-calendar-check"></i> Event Management</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SOCIAL LINKS ROW -->
+        <div class="social-row">
+            <a href="https://github.com/ah8885162-SE" target="_blank" class="social-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/ali-hasan-61a325356" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alihasan1.se@gmail.com" target="_blank" class="social-icon" title="Send Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div>© 2026 Ali Hasan. Designed & Built with Precision.</div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

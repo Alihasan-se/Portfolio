@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements & Honors | Ali Hasan</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(17, 24, 39, 0.65);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.4);
+            --accent-purple: #8b5cf6;
+            --accent-gold: #f59e0b;
+            --accent-red: #ef4444;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(0, 242, 254, 0.18);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 20% 85%, rgba(0, 242, 254, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* NAVBAR HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* MAIN WRAPPER */
+        .main-wrapper {
+            padding: 8rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInPage 1s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO HEADER */
+        .hero-section {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 4rem;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: var(--accent-gold);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .page-title span {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* CARD 1: FYP 1st PLACE (GOLD) */
+        .card-fyp {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.85), rgba(17, 24, 39, 0.9));
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            border-radius: 24px;
+            padding: 2.8rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(245, 158, 11, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            overflow: hidden;
+        }
+
+        .card-fyp::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary));
+        }
+
+        .fyp-icon-box {
+            width: 105px;
+            height: 105px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.05));
+            border: 1px solid rgba(245, 158, 11, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.25);
+        }
+
+        .fyp-details h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .fyp-venue {
+            font-size: 1.05rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fyp-desc {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* CARD 2: VICE PRESIDENT OPERATIONS (PURPLE) */
+        .card-vp {
+            background: linear-gradient(135deg, rgba(88, 28, 135, 0.35), rgba(17, 24, 39, 0.85));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 24px;
+            padding: 2.8rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(139, 92, 246, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            overflow: hidden;
+        }
+
+        .card-vp::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--primary));
+        }
+
+        .vp-icon-box {
+            width: 105px;
+            height: 105px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .vp-details h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .vp-org {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .vp-desc {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .vp-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .vp-pill-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: #e5e7eb;
+            padding: 0.4rem 0.9rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vp-pill-item i { color: var(--accent-purple); }
+
+        /* CARD 3: PENETRATION TESTING BEST PROJECT (CYBER RED/CYAN) */
+        .card-pentest {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(17, 24, 39, 0.85));
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            border-radius: 24px;
+            padding: 2.8rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 242, 254, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            overflow: hidden;
+        }
+
+        .card-pentest::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+        }
+
+        .pentest-icon-box {
+            width: 105px;
+            height: 105px;
+            border-radius: 24px;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+        }
+
+        .pentest-details h2 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .pentest-sub {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pentest-desc {
+            color: #d1d5db;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* GRID FOR CARDS 4, 5, 6 */
+        .section-heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-heading i { color: var(--primary); }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.2rem;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .grid-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.1);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .card-title-group h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-title-group .year-tag {
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        .issuer-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: #e5e7eb;
+            padding: 0.4rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* SOCIAL FOOTER */
+        .social-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .social-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glow);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(3, 7, 18, 0.95);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 900px) {
+            .page-title { font-size: 2.4rem; }
+            .card-fyp, .card-vp, .card-pentest { flex-direction: column; text-align: center; padding: 2rem; }
+            .fyp-icon-box, .vp-icon-box, .pentest-icon-box { margin: 0 auto; }
+            .vp-pills { justify-content: center; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-deep);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                border-bottom: 1px solid var(--border-glow);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ALI<span> HASAN</span></a>
+            <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html" class="active">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+        
+        <!-- HERO HEADER -->
+        <div class="hero-section">
+            <div class="badge-pill">
+                <i class="fas fa-award"></i> Recognition & Excellence
+            </div>
+            <h1 class="page-title">Honors, Leadership & <span>Certifications</span></h1>
+            <p class="page-subtitle">A curated timeline of competitive awards, executive university positions, cybersecurity academic excellence, and conference recognitions.</p>
+        </div>
+
+        <!-- 1st PRIORITY: FYP 1st POSITION AWARD -->
+        <div class="card-fyp">
+            <div class="fyp-icon-box">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="fyp-details">
+                <h2>1st Position — 14th Industrial Open House 2026</h2>
+                <div class="fyp-venue">
+                    <i class="fas fa-university"></i> Capital University of Science & Technology (CUST)
+                </div>
+                <p class="fyp-desc">
+                    Awarded First Place overall for engineering innovation and real-world impact with <strong>FLAIR</strong> (Flood Level Assessment & Intelligent Response System)—an IoT-driven flood monitoring and real-time early warning system.
+                </p>
+            </div>
+        </div>
+
+        <!-- 2nd PRIORITY: VICE PRESIDENT OPERATIONS -->
+        <div class="card-vp">
+            <div class="vp-icon-box">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="vp-details">
+                <h2>Vice President (Operations)</h2>
+                <div class="vp-org">
+                    <i class="fas fa-sitemap"></i> CUST CAUSE Society
+                </div>
+                <p class="vp-desc">
+                    Heading operational execution, technical symposiums, and inter-society collaborations. Leading student teams to orchestrate university-wide events, workshops, and data engineering mentorship initiatives.
+                </p>
+                <div class="vp-pills">
+                    <div class="vp-pill-item"><i class="fas fa-check-circle"></i> Operational Strategy & Leadership</div>
+                    <div class="vp-pill-item"><i class="fas fa-check-circle"></i> Event Execution & Team Management</div>
+                    <div class="vp-pill-item"><i class="fas fa-check-circle"></i> Technical Workshops Director</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3rd PRIORITY: BEST PROJECT IN PENETRATION TESTING -->
+        <div class="card-pentest">
+            <div class="pentest-icon-box">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="pentest-details">
+                <h2>Best Project Award — Penetration Testing Course</h2>
+                <div class="pentest-sub">
+                    <i class="fas fa-laptop-code"></i> Cybersecurity & Ethical Hacking Excellence
+                </div>
+                <p class="pentest-desc">
+                    Recognized for delivering the highest-rated practical security project in the Penetration Testing curriculum. Demonstrated comprehensive vulnerability assessment, threat modeling, network exploit simulation, and security patching documentation.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4th, 5th, 6th PRIORITY: CONFERENCE & COMMUNITY CERTIFICATES -->
+        <h3 class="section-heading"><i class="fas fa-certificate"></i> Conference & Service Certifications</h3>
+        
+        <div class="achievements-grid">
+            
+            <!-- 4th: ICCOR Poster Presentation Certificate -->
+            <div class="grid-card">
+                <div>
+                    <div class="card-top">
+                        <div class="cert-icon">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                        <div class="card-title-group">
+                            <h3>Appreciation Certificate for Poster Presentation</h3>
+                            <span class="year-tag">ICCOR Conference | 2026</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Honored with an official Appreciation Certificate for presenting research findings and IoT engineering system designs at the International Conference (ICCOR 2026).
+                    </p>
+                </div>
+                <div>
+                    <span class="issuer-pill"><i class="fas fa-building-columns"></i> ICCOR Conference Committee</span>
+                </div>
+            </div>
+
+            <!-- 5th: iSenCE Conference Volunteer Certificate -->
+            <div class="grid-card">
+                <div>
+                    <div class="card-top">
+                        <div class="cert-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="card-title-group">
+                            <h3>Volunteer Appreciation Certificate</h3>
+                            <span class="year-tag">iSenCE Conference | 2025</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Recognized for outstanding event management support, technical setup execution, and student coordination during the iSenCE Conference at CUST.
+                    </p>
+                </div>
+                <div>
+                    <span class="issuer-pill"><i class="fas fa-university"></i> CUST Organizing Committee</span>
+                </div>
+            </div>
+
+            <!-- 6th: PRCS Volunteer in Service Certificate -->
+            <div class="grid-card">
+                <div>
+                    <div class="card-top">
+                        <div class="cert-icon">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <div class="card-title-group">
+                            <h3>Volunteer in Service Certificate</h3>
+                            <span class="year-tag">PRCS | 2025</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Awarded a Volunteer in Service Certificate by the Pakistan Red Crescent Society for active participation in humanitarian community outreach initiatives.
+                    </p>
+                </div>
+                <div>
+                    <span class="issuer-pill"><i class="fas fa-shield-heart"></i> Pakistan Red Crescent Society</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SOCIAL LINKS -->
+        <div class="social-row">
+            <a href="https://github.com/ah8885162-SE" target="_blank" class="social-icon" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/ali-hasan-61a325356" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alihasan1.se@gmail.com" target="_blank" class="social-icon" title="Send Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div>© 2026 Ali Hasan. Designed & Built with Precision.</div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

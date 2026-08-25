@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Hasan | Software Engineer & IoT Developer</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        :root {
+            --bg-deep: #060913;
+            --bg-card: rgba(13, 20, 36, 0.75);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.35);
+            --accent: #4facfe;
+            --accent-gold: #ffb703;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 242, 254, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(79, 172, 254, 0.08) 0%, transparent 40%);
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* HEADER / NAVBAR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 12px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* HERO SECTION WITH LEFT-TO-RIGHT ENTRANCE */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            animation: slideFromLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--border-glow);
+            border-radius: 30px;
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+
+        .badge-tag i {
+            font-size: 0.75rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-title .name {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            min-height: 2.8rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .typing-text {
+            border-right: 3px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 0.75s step-end infinite;
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary); }
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        /* SOCIAL LOGOS (GitHub, LinkedIn, Mail) */
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .social-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--text-main);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+       /* ACTION BUTTONS */
+       .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 0.9rem 2.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #060913;
+            font-weight: 700;
+            border-radius: 10px;
+            box-shadow: 0 0 20px var(--primary-glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        /* UPDATED RESUME BUTTON (.btn-outline) */
+        .btn-outline {
+            padding: 0.9rem 2.2rem;
+            background: rgba(13, 20, 36, 0.8);
+            color: var(--text-main);
+            font-weight: 600;
+            border: 1px solid var(--border-glow);
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline i {
+            color: var(--primary);
+            font-size: 1.05rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(0, 242, 254, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-outline:hover i {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-glow);
+            padding: 1.8rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: rgba(6, 9, 19, 0.9);
+        }
+
+        /* RESPONSIVE STYLES */
+        @media (max-width: 850px) {
+            .hero-title { font-size: 2.5rem; }
+            .typing-container { font-size: 1.3rem; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-deep);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                display: none;
+                border-bottom: 1px solid var(--border-glow);
+            }
+            .nav-links.active { display: flex; }
+            .menu-btn { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">ALI<span> HASAN</span></a>
+            <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-tag">
+                <i class="fas fa-circle"></i> Available for Software Engineering Roles
+            </div>
+
+            <h1 class="hero-title">
+                Hello, I'm <span class="name">Ali Hasan</span>
+            </h1>
+
+            <!-- CONTINUOUS TYPING HEADLINE -->
+            <div class="typing-container">
+                <span class="typing-text" id="typewriter"></span>
+            </div>
+
+            <p class="hero-description">
+                    Software Engineer specializing in IoT embedded systems, web applications, and modern software design. Driven by a passion for building practical technology solutions and leading impactful tech projects.
+                </p>
+
+            <!-- SOCIAL LOGOS (GitHub, LinkedIn, Email) -->
+            <div class="social-row">
+                <a href="https://github.com/ah8885162-SE" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/ali-hasan-61a325356" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alihasan1.se@gmail.com" target="_blank" class="social-icon" title="Send Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="btn-group">
+                <a href="projects.html" class="btn-primary">
+                    <span>Explore My Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="resume.pdf" target="_blank" class="btn-outline">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>View Resume</span>
+                </a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>© 2026 Ali Hasan. Designed & Built with Precision.</div>
+    </footer>
+
+    <!-- EMBEDDED JAVASCRIPT FOR MOBILE MENU & TYPING ANIMATION -->
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Continuous Loop Typewriter Effect
+        const words = [
+            "Software Engineering Graduate",
+            "Web Development",
+            "IoT & Embedded Systems ",
+            "Software Development" 
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriter = document.getElementById('typewriter');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typewriter.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriter.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2200; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; // Pause before typing next word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typing on load
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
